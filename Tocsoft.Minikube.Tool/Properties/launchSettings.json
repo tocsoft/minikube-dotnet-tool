@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
+    },
+    "Tocsoft.Minikube.Tool": {
+      "commandName": "Project",
+      "commandLineArgs": "ssh"
+    }
+  }
+}

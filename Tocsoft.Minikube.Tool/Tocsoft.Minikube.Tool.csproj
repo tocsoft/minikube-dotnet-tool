@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<AssemblyName>tocsoft-kubectl</AssemblyName>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>minikube</ToolCommandName>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
+		<IsPackable>true</IsPackable>
+		<RollForward>LatestMajor</RollForward>
+		<PackageId>Tocsoft.Minikube.Tool</PackageId>
+		<FileVersion Condition="'$(FileVersion)' == ''">1.24.0</FileVersion>
+		<Description>dotnet tool to wrap minikube (this package is untested and intended for internal tool)</Description>
+	</PropertyGroup>
+
+</Project>

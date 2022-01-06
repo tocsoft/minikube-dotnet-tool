@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 16 * * *' # every day at 16:00 hours
+  workflow_dispatch:
+    inputs:
+      packageversion :
+        required: false
+        default: ''
+      targetversion :
+        required: false
+        default: 'latest'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x' # SDK Version to use; x will use the latest version of the 3.1 channel
+
+      - name: Publish
+        shell: pwsh
+        run:  .\build\publish.ps1 -ApiKey "${{ secrets.NUGET_API_KEY }}" -Version "${{ github.event.inputs.targetversion}}" -PackageVersion "${{ github.event.inputs.packageversion}}"
